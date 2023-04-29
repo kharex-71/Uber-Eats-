@@ -6,21 +6,22 @@ import SettingsDetails from "../components/screens/SettingsDetails";
 
 const Stack = createNativeStackNavigator();
 
-function SettingsNavigator() {
+function AccountNavigation() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen
         name={ROUTES.SETTINGS_SCREEN}
         component={Settings}
         options={{ headerShown: false }}
+
       />
       <Stack.Screen
         name={ROUTES.SETTINGS_DETAILS}
         component={SettingsDetails}
-        options={{ headerShown: false }}
+        
       />
     </Stack.Navigator>
   );
 }
 
-export default SettingsNavigator;
+export default AccountNavigation;

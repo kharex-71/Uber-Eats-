@@ -2,18 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { Text, View } from "react-native";
 
-const ShopContainer = styled(View)`
+const BasketsContainer = styled(View)`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
-const Shop = () => {
+const Baskets = () => {
   return (
-    <ShopContainer>
-      <Text>SHOP SCREEN</Text>
-    </ShopContainer>
+    <BasketsContainer>
+      <Text>Baskets SCREEN</Text>
+    </BasketsContainer>
   );
 };
 
-export default Shop;
+export default Baskets;

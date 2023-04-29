@@ -2,18 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { Text, View } from "react-native";
 
-const OrdersContainer = styled(View)`
+const GroceryContainer = styled(View)`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
-const Orders = () => {
+const Grocery = () => {
   return (
-    <OrdersContainer>
-      <Text>ORDERS SCREEN</Text>
-    </OrdersContainer>
+    <GroceryContainer>
+      <Text>GROCERY SCREEN</Text>
+    </GroceryContainer>
   );
 };
 
-export default Orders;
+export default Grocery;

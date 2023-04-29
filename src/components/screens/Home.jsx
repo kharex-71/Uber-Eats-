@@ -1,18 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { Text, View } from "react-native";
+import HomeScreen from "./HomeScreen";
+import DiteilsScreen from "./DiteilsScreen"
+import OrderScreen from "./OrderScreen";
 
-const HomeContainer = styled(View)`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
 
-const Home = () => {
+
+
+
+const Home = ({navigation}) => {
+
   return (
-    <HomeContainer>
-      <Text>HOME SCREEN</Text>
-    </HomeContainer>
+    
+        <DiteilsScreen/>
+    
   );
 };
 

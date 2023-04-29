@@ -1,12 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home from "../components/screens/Home";
-import Orders from "../components/screens/Orders";
-import Settings from "../components/screens/Settings";
-import Shop from "../components/screens/Shop";
-
+import Baskets from "../components/screens/Baskets"
+import Grocery from "../components/screens/Grocery"
+import AccountNavigation from "./AccountNavigation"
 import * as ROUTES from "../constants/routes";
-import SettingsNavigator from "./SettingsNavigator";
+
 
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -14,19 +13,20 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
   return (
-    <Tab.Navigator
+    <Tab.Navigator 
       screenOptions={({ route }) => ({
+        headerShown: true,
         tabBarIcon: ({ color, size, focused }) => {
           let icon;
 
           if (route.name === ROUTES.HOME_SCREEN) {
             icon = focused ? "home" : "home-outline";
-          } else if (route.name === ROUTES.ORDERS_SCREEN) {
-            icon = focused ? "card" : "card-outline";
-          } else if (route.name === ROUTES.SETTINGS_NAVIGATOR_SCREEN) {
-            icon = focused ? "settings" : "settings-outline";
-          } else if (route.name === ROUTES.SHOP_SCREEN) {
-            icon = focused ? "fast-food" : "fast-food-outline";
+          } else if (route.name === ROUTES.BASKETS_SCREEN) {
+            icon = focused ? "cart" : "cart-outline";
+          } else if (route.name === ROUTES.GROCERY_SCREEN) {
+            icon = focused ? "fast-food" : "fast-food-outline";       
+          } else if (route.name === ROUTES.ACCOUNT_NAVIGATOR_SCREEN) {
+            icon = focused ? "person" : "person-outline";
           }
           return <Icon name={icon} size={size} color={color} />;
         },
@@ -35,22 +35,25 @@ const BottomTabNavigation = () => {
       <Tab.Screen
         name={ROUTES.HOME_SCREEN}
         component={Home}
-        options={{ title: "Home" }}
+        options={{ title: "Home", headerShown: false }}
       />
+
       <Tab.Screen
-        name={ROUTES.ORDERS_SCREEN}
-        component={Orders}
-        options={{ title: "Order" }}
+        name={ROUTES.GROCERY_SCREEN}
+        component={Grocery}
+        options={{ title: "Grocery" }}
       />
+
       <Tab.Screen
-        name={ROUTES.SETTINGS_NAVIGATOR_SCREEN}
-        component={SettingsNavigator}
-        options={{ title: "Settings" }}
+        name={ROUTES.BASKETS_SCREEN}
+        component={Baskets}
+        options={{ title: "Baskets" }}
       />
+
       <Tab.Screen
-        name={ROUTES.SHOP_SCREEN}
-        component={Shop}
-        options={{ title: "Shop" }}
+        name={ROUTES.ACCOUNT_NAVIGATOR_SCREEN}
+        component={AccountNavigation}
+        options={{ title: "Account", headerShown: false }}
       />
     </Tab.Navigator>
   );

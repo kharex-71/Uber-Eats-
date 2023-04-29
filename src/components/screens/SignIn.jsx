@@ -1,90 +1,61 @@
 import React, { useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View,Image, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import {FontAwesomeIcon} from "react-native-vector-icons/FontAwesome5"
 
 import Button from "../atoms/custombutton/Button";
-import Input from "../atoms/customInput/Input";
-import Screen from "../atoms/screendimensions/Screen";
-import LoginScreenImage from "../images/LoginScreenImages";
 
 import styled from "styled-components/native";
 import * as ROUTES from "../../constants/routes";
 
-const Container = styled(Screen)`
-  flex: 1;
+
+
+
+const Container = styled(View)`
+  flex-direction: column;
 `;
 
-const Image = styled(LoginScreenImage)`
-  margin-top: 50px;
-  margin-bottom: 28px;
-`;
-
-const ErorrText = styled(Text)`
-  font-size: 10px;
-  right: 10%;
-  color: red;
-`;
-
-const Title = styled(Text)`
-  color: #54924f;
-  font-size: 16px;
-`;
-
-const ForgotContainer = styled(View)`
-  display: flex;
-  flex-direction: row;
+const Picture = styled(Image)`
+ width: 100%;
 `;
 
 const SignupContainer = styled(View)`
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-evenly;
 `;
+
+
+const ContentText = styled(Text)`
+color: #000000;
+font-weight: 500;
+font-size: 30px;
+line-height: 36px;
+margin-top: 10px;
+`;
+
+const SinUpInput = styled(TextInput)`
+width: 345px;
+height: 51px;
+background: #F5F5F5;
+border: 1px solid #E6E6E6;
+`;
+
 
 const SignIn = () => {
   const navigation = useNavigation();
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [inputError, setInputError] = useState(false);
-
-  const handlePress = () => {
-    if (userName !== "" && password !== "") {
-      navigation.navigate(ROUTES.BOTTOM_TAB_NAV, {
-        userOfname: userName,
-        Ofpassword: password,
-      });
-    } else {
-      setInputError(true);
-    }
-  };
-
   return (
     <Container>
-      <Image />
-      <Input value={userName} placeholder="username" setValue={setUserName} />
-      {inputError && <ErorrText>Username cannot be empty</ErorrText>}
-      <Input
-        value={password}
-        placeholder="password"
-        setValue={setPassword}
-        secureTextEntry
-      />
-      {inputError && <ErorrText>Password cannot be empty</ErorrText>}
-      <Button title="Sing in" onPress={handlePress} />
-      <ForgotContainer>
-        <Text>Forgot password? </Text>
-        <Pressable
-          onPress={() => navigation.navigate(ROUTES.FORGOT_PASSWORD_SCREEN)}
-        >
-          <Title> Reset</Title>
-        </Pressable>
-      </ForgotContainer>
+      <Picture source={require('../../../assets/picture/LoadingScreen.png')}/>
       <SignupContainer>
-        <Text>Does`t have account? </Text>
-        <Pressable onPress={() => navigation.navigate(ROUTES.SIGN_UP_SCREEN)}>
-          <Title> Sign Up</Title>
-        </Pressable>
+        <ContentText>Use your uber account to get started</ContentText>
+        
+        <Button title="Sing in" onPress={() => navigation.navigate(ROUTES.DRAWER_NAVIGATOR)} />
+        <SinUpInput
+        value="number"
+        
+        
+        />
+        <FontAwesomeIcon icon="fa-regular fa-earth-americas" />
       </SignupContainer>
     </Container>
   );

@@ -1,10 +1,9 @@
-import React from "react";
 import styled from "styled-components/native";
 
 const Container = styled.Pressable`
-  width: ${({ light }) => (light ? "266" : "258")};
-  height: ${({ light }) => (light ? "52" : "45")};
-  background: ${({ light }) => (light ? "#C7DAC5" : "#54924F")};
+  width: 258px;
+  height: 45px;
+  background: #54924F;
   border-radius: 16px;
   display: flex;
   justify-content: center;
@@ -14,14 +13,14 @@ const Container = styled.Pressable`
 `;
 
 const Title = styled.Text`
-  color: ${({ light }) => (light ? "#54924F" : "#C7DAC5")};
+  color: ${props => props.$light ? "#54924F" : "#C7DAC5"};
   font-size: 16px;
 `;
 
-const Button = ({ title, onPress, light = false }) => {
+const Button = ({ title, onPress}) => {
   return (
-    <Container onPress={onPress} light={light}>
-      <Title light={light}>{title}</Title>
+    <Container onPress={onPress} >
+      <Title >{title}</Title>
     </Container>
   );
 };

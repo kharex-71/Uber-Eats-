@@ -8,7 +8,7 @@ import Screen from "../components/atoms/screendimensions/Screen";
 import SignIn from "../components/screens/SignIn";
 import ForgotPassword from "../components/screens/ForgotPassword";
 import * as ROUTES from "../constants/routes";
-import BottomTabNavigation from "./BottomTabNavigation";
+import DrawerNavigator from "./DrawerNavigator";
 
 const Container = styled(Screen)``;
 
@@ -30,26 +30,7 @@ const SignUp = () => {
 const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "transparent",
-          },
-          headerTintColor: "#005596",
-          headerTransparent: true,
-          headerTitle: "",
-          headerLeftContainerStyle: {
-            paddingLeft: 20,
-          },
-        }}
-        initialRouteName="SignIn"
-      >
-        <Stack.Screen
-          name={ROUTES.SIGN_UP_SCREEN}
-          options={{ headrShown: false }}
-          component={SignUp}
-        />
-
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name={ROUTES.SIGN_IN_SCREEN}
           options={{ headrShown: false }}
@@ -57,15 +38,19 @@ const AppNavigation = () => {
         />
 
         <Stack.Screen
+          name={ROUTES.SIGN_UP_SCREEN}
+          component={SignUp}
+        />
+
+        <Stack.Screen
           name={ROUTES.FORGOT_PASSWORD_SCREEN}
-          options={{ headrShown: false }}
           component={ForgotPassword}
         />
 
         <Stack.Screen
-          name={ROUTES.BOTTOM_TAB_NAV}
+          name={ROUTES.DRAWER_NAVIGATOR}
+          component={DrawerNavigator}
           options={{ headrShown: false }}
-          component={BottomTabNavigation}
         />
       </Stack.Navigator>
     </NavigationContainer>
