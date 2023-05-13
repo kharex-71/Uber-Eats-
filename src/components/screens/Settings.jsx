@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Text, View } from "react-native";
-import Button from "../atoms/custombutton/Button";
+import Button from "../../components/atoms/custombutton/Button";
 
 import * as ROUTES from "../../constants/routes";
 import { useNavigation } from "@react-navigation/native";

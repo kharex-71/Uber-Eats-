@@ -1,28 +1,34 @@
-import styled from "styled-components";
-import { View, Text, Pressable } from "react-native";
+import { Image } from "react-native";
+import styled from "styled-components/native";
 
-
-const Btn = styled(Pressable)`
-${({blck}) => (blck ? `background-color: #000000` : "")}
-padding: 9px 24px;
-border-radius: 23px;
+const Container = styled.Pressable`
+  background-color: ${({light})=> (light ? "#FFFFFF" : "#000000")};
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 `;
 
-const TitleBtn = styled(Text)`
-color: ${({blck}) => (blck ? "#FFFFFF" : "#000000")};
+const Title = styled.Text`
+  color: ${({light})=> (light ?  "#000000" : "#FFFFFF" )};
+  font-size: 16px;
+  padding: 8px 20px ;
+  
 `;
 
-const HeaderBtn = ({title, onPress, blck = false}) => {
-    
-    return(
-        
-            <Btn
-            blck={blck}
-            onPress={onPress}>
-                <TitleBtn>{title}</TitleBtn>
-            </Btn>
-        
-    )
-}
+const Icon = styled.Image`
+${({iconLeft})=> (iconLeft ? "margin-right: 10px;" : "margin-left: 16px;")}
+`;
+
+const HeaderBtn = ({ title, onPress, light=false,iconLeft,iconRight, ...otherProps}) => {
+  return (
+    <Container onPress={onPress} light={light} {...otherProps} >
+      {iconLeft && <Icon source={iconLeft}/>}
+      <Title >{title}</Title>
+      {iconRight && <Icon source={iconRight}/>}
+    </Container>
+  );
+};
 
 export default HeaderBtn;

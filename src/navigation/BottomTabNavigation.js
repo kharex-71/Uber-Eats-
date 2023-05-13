@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home from "../components/screens/Home";
+import Browse from "../components/screens/Browse"
 import Baskets from "../components/screens/Baskets"
 import Grocery from "../components/screens/Grocery"
 import AccountNavigation from "./AccountNavigation"
@@ -21,6 +22,8 @@ const BottomTabNavigation = () => {
 
           if (route.name === ROUTES.HOME_SCREEN) {
             icon = focused ? "home" : "home-outline";
+          } else if (route.name === ROUTES.BROWSE_SCREEN) {
+            icon = focused ? "eye" : "eye-outline";
           } else if (route.name === ROUTES.BASKETS_SCREEN) {
             icon = focused ? "cart" : "cart-outline";
           } else if (route.name === ROUTES.GROCERY_SCREEN) {
@@ -38,6 +41,14 @@ const BottomTabNavigation = () => {
         options={{ title: "Home", headerShown: false }}
       />
 
+
+      <Tab.Screen
+        name={ROUTES.BROWSE_SCREEN}
+        component={Browse}
+        options={{ title: "Browse", headerShown: false }}
+      />
+      
+
       <Tab.Screen
         name={ROUTES.GROCERY_SCREEN}
         component={Grocery}
@@ -47,7 +58,7 @@ const BottomTabNavigation = () => {
       <Tab.Screen
         name={ROUTES.BASKETS_SCREEN}
         component={Baskets}
-        options={{ title: "Baskets" }}
+        options={{ title: "Baskets", headerShown: false }}
       />
 
       <Tab.Screen

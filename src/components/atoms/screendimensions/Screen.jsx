@@ -17,9 +17,10 @@ const Background = styled.ImageBackground`
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  justify-content: center;
+  /* justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
+  background: #E5E5E5;
 `;
 
 const Screen = ({ children }) => {

@@ -4,7 +4,7 @@
     "slug": "Uber-Eats",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Uber-Eats.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/Uber-Eats.png",
@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/Uber-Eats.png",
+        "backgroundColor": "#142328"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/Uber-Eats.png"
     }
   }
 }

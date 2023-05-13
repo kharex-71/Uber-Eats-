@@ -16,7 +16,7 @@ const DrawerNavigator = () => {
         <Drawer.Screen
           name={ROUTES.BOTTOM_TAB_NAV}
           component={BottomTabNavigation}
-          options={{headerShown:false}}
+          options={{headerShown:false, title:false}}
         />   
       </Drawer.Navigator>
   );
