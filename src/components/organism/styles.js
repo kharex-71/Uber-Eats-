@@ -66,7 +66,7 @@ right: 35px;
 
 // RESTDETAILSCARD.JS start styles
 
-export const DetailsContainer = styled.View`
+export const DetailsContainer = styled.Pressable`
 width: 100%;
 display: flex;
 flex-direction: row;

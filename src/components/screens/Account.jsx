@@ -91,7 +91,7 @@ const Account = () => {
       <Container>
         <UserContainer>
           <Pressable
-            onPress={() => navigation.navigate(ROUTES.SETTINGS_DETAILS)}
+            onPress={() => navigation.navigate(ROUTES.SETTINGS_SCREEN)}
           >
             <Image source={require("../../../assets/account/user.png")} />
           </Pressable>

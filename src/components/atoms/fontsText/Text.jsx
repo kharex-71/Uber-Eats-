@@ -4,14 +4,14 @@ import styled from "styled-components/native";
 const Txt = styled.Text`
   font-family: ${({ type }) => {
     switch (type) {
-      case "Bold":
-        return "Bold";
-      case "Medium":
-        return "Medium";
-      case "Regular":
-        return "Regular";
-      case "Light":
-        return "Light";
+      case "bold":
+        return "bold";
+      case "medium":
+        return "medium";
+      case "regular":
+        return "regular";
+      case "light":
+        return "light";
     }
   }};
   font-size: ${({ size }) => (size ? size : 16)}px;

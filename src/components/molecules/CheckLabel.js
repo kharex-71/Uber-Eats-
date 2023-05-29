@@ -1,4 +1,3 @@
-import { View } from 'react-native'
 import React,{ useState } from 'react'
 import styled from 'styled-components/native'
 import Checkbox from 'expo-checkbox';
@@ -53,15 +52,15 @@ const CheckBox = ({text,number,select,setCollector}) => {
                 }} 
                 />
         <TextBox>
-        <Text type="Medium" color='black-400' style={{marginLeft: 7}}>{text}</Text>
+        <Text type="medium" color='black-400' style={{marginLeft: 7}}>{text}</Text>
         {select && <SelectBox>
-        <Text type="Light" color='gray-700' style={{marginLeft: 7}}><Text type="Light" color='gray-700'>US$ {select} Select options</Text></Text>
+        <Text type="light" color='gray-700' style={{marginLeft: 7}}><Text type="light" color='gray-700'>US$ {select} Select options</Text></Text>
         </SelectBox>}
         </TextBox>
         </LeftContainer>
         {number && 
           <TextWrapper>
-            <Text type="Light" color='gray-700'>US$  {number}</Text>
+            <Text type="light" color='gray-700'>US$  {number}</Text>
           </TextWrapper>}
       
     </Container>

@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components/native";
-import { View,Text,Pressable, Image} from "react-native";
 
 
 const Container = styled.Pressable`
-width: 142px;
-background-color: #EEEEEE;
+width: 50%;
+${({light})=> (light ? `background-color: #EEEEEE;` : "")}
 border-radius: 99px;
 display: flex;
 flex-direction: row;
@@ -34,9 +33,9 @@ justify-content: center;
 const Icon = styled.Image``;
 
 
-const BigBtn = ({title,subTitle,iconUrl}) => {
+const BigBtn = ({title,subTitle,iconUrl,light=false, onPress}) => {
     return(
-        <Container>
+        <Container onPress={onPress} light={light}>
             {iconUrl && <Icon source={require("../../../../assets/icon/Group.png")}/>}
             <TitleContainer>
                 <Title>{title}</Title>

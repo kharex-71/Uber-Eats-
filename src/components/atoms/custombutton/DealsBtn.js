@@ -8,7 +8,7 @@ const Container = styled.Pressable`
   justify-content: center;
   ${({light})=> (light ? `border-bottom-width: 5px;` : "")}
   padding:16px;
-  width:205px
+  width:205px;
 `;
 
 const Title = styled.Text`
@@ -33,4 +33,4 @@ const DealsBtn = ({onPress,imgUrl,title,light=false,...otherProps}) => {
   )
 }
 
-export default DealsBtn
+export default DealsBtn;

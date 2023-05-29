@@ -5,8 +5,8 @@ const PromotionWidget = () => {
   return (
     <View style={styles.container}>
         <View style={styles.text}>
-            <Text style={{fontFamily: "Bold", fontSize: 16, paddingBottom: 8}}>Promotion applied</Text>
-            <Text style={{fontFamily: "Medium", fontSize: 16}}>View basket for final discount</Text>
+            <Text style={{fontFamily: "bold", fontSize: 16, paddingBottom: 8}}>Promotion applied</Text>
+            <Text style={{fontFamily: "medium", fontSize: 16}}>View basket for final discount</Text>
         </View>
         <View style={styles.icon}>
             <Image source={require("../../../assets/icon/promoIcon.png")}/>

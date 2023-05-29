@@ -41,11 +41,13 @@ const RadioLabel = ({setCollector,arry}) => {
               radio_props={arry}
               initial={value}
               onPress={(value) => setValue(value)}
+              selectedButtonColor="black"
+              buttonColor='black'
           />
           <TextWrapper>
           {arry.map((item) => {
           if (item.price > 0) {
-            return <Text type="Light" color='gray-700' key={item.id}>US${item.price} ea</Text>;
+            return <Text type="light" color='gray-700' key={item.id}>US${item.price} ea</Text>;
           }
           })}
           </TextWrapper>

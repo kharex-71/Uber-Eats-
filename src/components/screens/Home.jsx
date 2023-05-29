@@ -11,9 +11,7 @@ import {
   BtnsContainer,
   CategoriesContainer,
   Wrapper,
-  CardWrapper,
   CtgrContainer,
-  RestName,
 } from "./HomeStyled";
 import { Text, View, FlatList, ActivityIndicator } from "react-native";
 import { Portal } from "react-native-portalize";
@@ -609,13 +607,13 @@ const Home = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const categorySheetRef = useRef();
 
-  const waiting = () => {
-    if (loading) {
-      return <ActivityIndicator />;
-    } else {
-      setLoading(false);
-    }
-  };
+  // const waiting = () => {
+  //   if (loading) {
+  //     return <ActivityIndicator />;
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // };
 
   const fetchData = () => {
     if (sort === 0) {
@@ -644,64 +642,82 @@ const Home = ({ navigation }) => {
       title: "Dine-in",
     },
   ];
+
   useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
-      <ActivityIndicator size="large" color="blue" />;
-      fetchData(waiting);
-    }, 2000);
-  });
+      setLoading(false);
+      fetchData();
+    }, 1000);
+  }, [sort]);
 
   return (
     <Screen>
       <Wrapper>
-        <Header>
-          <BtnsContainer>
-            {btns.map((item) => {
-              return (
-                <HeaderBtn
-                  key={item.value}
-                  title={item.title}
-                  onPress={() => handlePress(item.value)}
-                  light={item.value === sort ? true : false}
-                />
-              );
-            })}
-          </BtnsContainer>
-          <Location>
-            <LocationTitle>Now &#8226; London Hall</LocationTitle>
-          </Location>
-          <CategoriesContainer>
-            {categoryBtn.map((item) => {
-              return (
-                <CategoryCard
-                  key={item.id}
-                  title={item.title}
-                  imgUrl={item.imgUrl}
-                  onPress={() => categorySheetRef.current.open()}
-                />
-              );
-            })}
-          </CategoriesContainer>
-        </Header>
-        <FlatList
-          data={data}
-          renderItem={({ item }) => (
-            <MainCard
-              keyExtractor={(item) => item.id}
-              title={item.title}
-              imgUrl={item.imgUrl}
-              price={sort === 0 ? item.price : ""}
-              deliveryTime={item.deliveryTime}
-              rating={item.rating}
-              promotion={sort === 0 ? item.promotion : ""}
-              distance={sort === 1 ? item.distance : ""}
-              onPress={() =>
-                navigation.navigate(ROUTES.REST_DETAILS, { id: item.id })
-              }
-            />
-          )}
-          showsVerticalScrollIndicator={false}
-        />
+        {loading ? (
+          <ActivityIndicator
+            size="large"
+            color="green"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          />
+        ) : (
+          <FlatList
+            ListHeaderComponent={
+              <Header>
+                <BtnsContainer>
+                  {btns.map((item) => {
+                    return (
+                      <HeaderBtn
+                        key={item.value}
+                        title={item.title}
+                        onPress={() => handlePress(item.value)}
+                        light={item.value === sort ? true : false}
+                      />
+                    );
+                  })}
+                </BtnsContainer>
+                <Location>
+                  <LocationTitle>Now &#8226; London Hall</LocationTitle>
+                </Location>
+                <CategoriesContainer>
+                  {categoryBtn.map((item) => {
+                    return (
+                      <CategoryCard
+                        key={item.id}
+                        title={item.title}
+                        imgUrl={item.imgUrl}
+                        onPress={() =>
+                          navigation.navigate(ROUTES.CONVENIENCE_STACK)
+                        }
+                      />
+                    );
+                  })}
+                </CategoriesContainer>
+              </Header>
+            }
+            data={data}
+            renderItem={({ item }) => (
+              <MainCard
+                keyExtractor={(item) => item.id}
+                title={item.title}
+                imgUrl={item.imgUrl}
+                price={sort === 0 ? item.price : ""}
+                deliveryTime={item.deliveryTime}
+                rating={item.rating}
+                promotion={sort === 0 ? item.promotion : ""}
+                distance={sort === 1 ? item.distance : ""}
+                onPress={() =>
+                  navigation.navigate(ROUTES.REST_DETAILS, { id: item.id })
+                }
+              />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
       </Wrapper>
       <Portal>
         <Bottom bottomSheetRef={categorySheetRef} modalHeight={555}>

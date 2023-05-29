@@ -1,25 +1,7 @@
 import React from "react";
-// import styled from "styled-components/native";
 import { Text, View, StyleSheet } from "react-native";
-// import Button from "../atoms/custombutton/Button";
 import { useNavigation } from "@react-navigation/native";
-// import * as ROUTES from "../../constants/routes";
-// import LargBtn from "../atoms/custombutton/LargBtn";
-// import LargBtnLight from "../atoms/custombutton/LargBtnLight";
 import MapView, { Marker } from "react-native-maps";
-// const GroceryContainer = styled.View`
-//   flex: 1;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-// const Container = styled.View`
-//   flex: 1;
-// `;
-// const Map = styled(MapView)`
-//   width: 100%;
-//   height: 100%;
-// `;
 
 let data = [
   {
@@ -40,7 +22,7 @@ let data = [
   },
 ];
 
-const Grocery = () => {
+const Map = () => {
   const navigation = useNavigation();
   const onRegionChange = (region) => {
     console.log(region);
@@ -76,7 +58,7 @@ const Grocery = () => {
   );
 };
 
-export default Grocery;
+export default Map;
 
 const styles = StyleSheet.create({
   container: {

@@ -16,7 +16,7 @@ const Wrapper = styled.ScrollView`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  /* padding: 10px; */
   /* margin-bottom: 78px; */
 `;
 const TopCtgr = styled.View`
@@ -28,7 +28,7 @@ const AllCtgr = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
 `;
 
 const categories = {
@@ -143,17 +143,17 @@ const Browse = () => {
   const navigation = useNavigation();
   return (
     <Container>
+      <SearchInput
+        placeholder="search"
+        value={input}
+        onChangeText={(text) => setInput(text)}
+      />
+      <SearchFilter
+        data={categories.allcategories}
+        input={input}
+        setInput={setInput}
+      />
       <Wrapper>
-        {/* <SearchInput
-          placeholder="search"
-          value={input}
-          onChangeText={(text) => setInput(text)}
-        />
-        <SearchFilter
-          data={categories.allcategories}
-          input={input}
-          setInput={setInput}
-        /> */}
         <SectionTitle>Top Categories</SectionTitle>
         <TopCtgr>
           {categories.topcategories.map((item) => {

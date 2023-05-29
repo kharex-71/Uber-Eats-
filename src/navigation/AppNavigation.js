@@ -5,7 +5,7 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {Host} from "react-native-portalize"
 
-import Button from "../components/atoms/custombutton/Button";
+// import Button from "../components/atoms/custombutton/Button";
 import Screen from "../components/atoms/screendimensions/Screen";
 import SignIn from "../components/screens/SignIn";
 import ForgotPassword from "../components/screens/ForgotPassword";
@@ -14,7 +14,9 @@ import DealsStack from "../components/screens/DealsStack";
 import RestourantDetails from "../components/screens/RestourantDetails";
 
 import * as ROUTES from "../constants/routes";
-
+import ConvenienceScreen from "../components/screens/ConvenienceScreen";
+import OrderSelection from "../components/screens/OrderSelection"
+import DeliveryDetails from "../components/screens/DeliveryDetails";
 
 
 
@@ -22,18 +24,18 @@ const Container = styled(Screen)``;
 
 const Stack = createStackNavigator();
 
-const SignUp = () => {
-  const navigation = useNavigation();
-  return (
-    <Container>
-      <Text>Sign up Screen</Text>
-      <Button
-        title="SignUp"
-        onPress={() => navigation.navigate(ROUTES.ACCOUNT_NAVIGATOR_SCREEN)}
-      />
-    </Container>
-  );
-};
+// const SignUp = () => {
+//   const navigation = useNavigation();
+//   return (
+//     <Container>
+//       <Text>Sign up Screen</Text>
+//       <Button
+//         title="SignUp"
+//         onPress={() => navigation.navigate(ROUTES.ACCOUNT_NAVIGATOR_SCREEN)}
+//       />
+//     </Container>
+//   );
+// };
 
 const AppNavigation = () => {
   return (
@@ -45,6 +47,7 @@ const AppNavigation = () => {
           options={{ headrShown: false }}
           component={SignIn}
         />
+        
 
         <Stack.Screen
           name={ROUTES.FORGOT_PASSWORD_SCREEN}
@@ -60,6 +63,21 @@ const AppNavigation = () => {
         <Stack.Screen
           name={ROUTES.REST_DETAILS}
           component={RestourantDetails}
+          options={{ headerShown: false}}
+        />
+        <Stack.Screen
+          name={ROUTES.CONVENIENCE_STACK}
+          component={ConvenienceScreen}
+          options={{ headerShown: false}}
+        />
+        <Stack.Screen
+          name={ROUTES.ORDER_SELECTTION}
+          component={OrderSelection}
+          options={{ headerShown: false}}
+        />
+        <Stack.Screen
+          name={ROUTES.DELIVERY_DETAILS}
+          component={DeliveryDetails}
           options={{ headerShown: false}}
         />
 

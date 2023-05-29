@@ -1,8 +1,7 @@
-import { Image } from "react-native";
 import styled from "styled-components/native";
 
 const Container = styled.Pressable`
-  background-color: ${({light})=> (light ? "#FFFFFF" : "#000000")};
+  background: ${({light})=> (light ? "#000000" : "#EEEEEE")};
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -11,7 +10,7 @@ const Container = styled.Pressable`
 `;
 
 const Title = styled.Text`
-  color: ${({light})=> (light ?  "#000000" : "#FFFFFF" )};
+  color: ${({light})=> (light ?  "#EEEEEE" : "#000000" )};
   font-size: 16px;
   padding: 8px 20px ;
   

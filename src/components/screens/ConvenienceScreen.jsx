@@ -144,13 +144,13 @@ const ConvenienceScreen = ({ navigation: { goBack } }) => {
             <Image source={backIcon} />
           </IconContainer>
           <TextContainer>
-            <Text type="Bold" color="black-400" size={36}>
+            <Text type="bold" color="black-400" size={36}>
               Convenience
             </Text>
           </TextContainer>
           <StoreInfo>
             <StoreTitle>
-              <Text type="Bold" color="black-400" size={30}>
+              <Text type="bold" color="black-400" size={30}>
                 Featured stores
               </Text>
             </StoreTitle>

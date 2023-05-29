@@ -10,7 +10,7 @@ flex: 1;
 display: flex;
 flex-direction: column;
 padding: 10px;
-padding-bottom: 172px;
+padding-bottom: 78px;
 `;
 export const Header = styled.View`
 height: 250px;
@@ -101,7 +101,9 @@ color: #545454;
 `;
 
 export const BackIcon = styled.Pressable`
-
+position: absolute;
+left: 16px;
+top: 46px
 `;
 
 
@@ -119,7 +121,7 @@ gap: 10px;
 
 export const ToggleButton = styled.View`
 background-color: lightgray;
-width: 300px;
+width: 342px;
 padding: 4px;
 border-radius: 40px;
 flex-direction: row;

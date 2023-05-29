@@ -11,7 +11,6 @@ height: 56px;
 `;
 
 const Title = styled.Text`
-font-family: "Medium";
 font-weight: 500;
 font-size: 16px;
 line-height: 20px;
@@ -37,11 +36,11 @@ const SettingsCard = ({title,icon,onPress,subtitle}) => {
   return (
     <Container onPress={onPress}>
       <IconContaienr>
-      <Image source={icon}/>
+        <Image source={icon}/>
       </IconContaienr>
       <TextContaienr>
-      <Title>{title}</Title>
-      {subtitle && <SubTitle>{subtitle}</SubTitle>}
+        <Title>{title}</Title>
+        {subtitle && <SubTitle>{subtitle}</SubTitle>}
       </TextContaienr>
     </Container>
   )

@@ -1,7 +1,8 @@
-import { View } from "react-native";
-import React, { useState } from "react";
-import styled from "styled-components/native";
+import { View, Image, Pressable } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { Portal } from "react-native-portalize";
 import { useNavigation } from "@react-navigation/native";
+import styled from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
 import * as ROUTES from "../../constants/routes";
 import Text from "../atoms/fontsText/Text";
@@ -9,14 +10,22 @@ import Screen from "../atoms/screendimensions/Screen";
 import PromotionWidget from "../molecules/PromotionWidget";
 import RadioLabel from "../molecules/RadioLabel";
 import CheckLabel from "../molecules/CheckLabel";
-import { useEffect } from "react";
+import Bottom from "../atoms/BottomSheet/Bottom";
+import LargBtn from "../atoms/custombutton/LargBtn";
+import LargBtnLight from "../atoms/custombutton/LargBtnLight";
+import OrderDeliveryCard from "../molecules/OrderDeliveryCard";
+import OrderDetailsCard from "../molecules/OrderDetailsCard";
+import RecommendationsCard from "../molecules/RecommendationsCard";
+import Button from "../atoms/custombutton/Button";
+
+const BackIcon = require("../../../assets/icon/backArrow.png");
+
 const Contaienr = styled(Screen)``;
 const Price = styled(Text)`
   margin: 8px 0;
 `;
 const RestDescContainer = styled.ScrollView`
   padding: 40px 10px 0px 10px;
-  /* margin-bottom: 200px; */
 `;
 
 const Required = styled.View`
@@ -51,6 +60,16 @@ const TotalBox = styled.Pressable`
   justify-content: center;
   align-items: center;
   flex-direction: row;
+`;
+
+const BottomSheetWrapper = styled.View`
+  padding: 33px 16px 67px 16px;
+`;
+const HeaderBox = styled.View``;
+const CartBox = styled.View``;
+const BtnBox = styled.View`
+  display: flex;
+  align-items: center;
 `;
 
 const obj = {
@@ -184,33 +203,34 @@ const obj = {
       id: 0,
       value: 1,
       label: "Soda",
-      price: 1.69,
+      price: 2,
       sale: false,
     },
     {
       id: 1,
       value: 2,
       label: "Cheeze Pizza",
-      price: 12.99,
+      price: 4,
       sale: false,
     },
     {
       id: 2,
       value: 3,
       label: "Amigos Hawaiana Pizza",
-      price: 16.99,
+      price: 8,
       sale: false,
     },
   ],
 };
 
-const OrderSelection = ({ route }) => {
+const OrderSelection = ({ route, navigation: { goBack } }) => {
   const navigation = useNavigation();
-  const { restourantName, price, recipe } = route.params;
+  const { restourantName, price, recipe, address } = route.params;
   const [total, setTotal] = useState(parseFloat(0));
   const [collector, setCollector] = useState(0);
   const [count, setCount] = useState(1);
-
+  const orderSheetRef = useRef();
+  // console.log(route.params);
   const minus = () => {
     if (count > 1) {
       setCount(count - 1);
@@ -224,6 +244,10 @@ const OrderSelection = ({ route }) => {
   useEffect(() => {
     setTotal(parseFloat(count) * 10 + parseFloat(collector));
   }, [count, collector]);
+
+  const handleSubmit = () => {
+    navigation.navigate(ROUTES.DELIVERY_DETAILS), orderSheetRef.current.close();
+  };
 
   // const isChecked = (id, amount, arr) => {
   //   let num = parseInt(price);
@@ -241,27 +265,30 @@ const OrderSelection = ({ route }) => {
   return (
     <Contaienr>
       <RestDescContainer>
+        <Pressable style={{ paddingBottom: 10 }} onPress={() => goBack()}>
+          <Image source={BackIcon} />
+        </Pressable>
         <View>
-          <Text type="Bold" size={24} color="black-400">
+          <Text type="bold" size={24} color="black-400">
             {restourantName}
           </Text>
-          <Text type="Bold" size={24} color="black-400">
+          <Text type="bold" size={24} color="black-400">
             (Emeryville)
           </Text>
-          <Price type="Bold" size={22} color="black-400">
+          <Price type="bold" size={22} color="black-400">
             ${price}
           </Price>
-          <Text type="Medium" size={16} color="gray-700">
+          <Text type="medium" size={16} color="gray-700">
             {recipe}
           </Text>
         </View>
         <PromotionWidget />
         <Required>
-          <Text type="Medium" color="black-400" size={18}>
+          <Text type="medium" color="black-400" size={18}>
             Choose your sauce
           </Text>
           <View style={{ backgroundColor: "lightgray", borderRadius: 15 }}>
-            <Text type="Bold" color="gray-700" size={14} style={{ padding: 4 }}>
+            <Text type="bold" color="gray-700" size={14} style={{ padding: 4 }}>
               Required
             </Text>
           </View>
@@ -270,11 +297,11 @@ const OrderSelection = ({ route }) => {
         <RadioLabel arry={obj.sauce} setCollector={setCollector} />
 
         <Required>
-          <Text type="Medium" color="black-400" size={18}>
+          <Text type="medium" color="black-400" size={18}>
             Choose your size
           </Text>
           <View style={{ backgroundColor: "lightgray", borderRadius: 15 }}>
-            <Text type="Bold" color="gray-700" size={14} style={{ padding: 4 }}>
+            <Text type="bold" color="gray-700" size={14} style={{ padding: 4 }}>
               Required
             </Text>
           </View>
@@ -283,11 +310,11 @@ const OrderSelection = ({ route }) => {
           <RadioLabel arry={obj.size} setCollector={setCollector} />
         </View>
         <Required>
-          <Text type="Medium" color="black-400" size={18}>
+          <Text type="medium" color="black-400" size={18}>
             Choose your crust
           </Text>
           <View style={{ backgroundColor: "lightgray", borderRadius: 15 }}>
-            <Text type="Bold" color="gray-700" size={14} style={{ padding: 4 }}>
+            <Text type="bold" color="gray-700" size={14} style={{ padding: 4 }}>
               Required
             </Text>
           </View>
@@ -296,7 +323,7 @@ const OrderSelection = ({ route }) => {
           <RadioLabel arry={obj.crust} setCollector={setCollector} />
         </View>
         <Required>
-          <Text type="Medium" color="black-400" size={18}>
+          <Text type="medium" color="black-400" size={18}>
             Choose your add-ons
           </Text>
         </Required>
@@ -313,7 +340,7 @@ const OrderSelection = ({ route }) => {
           })}
         </View>
         <Required>
-          <Text type="Medium" color="black-400" size={18}>
+          <Text type="medium" color="black-400" size={18}>
             Frequently brought together
           </Text>
         </Required>
@@ -323,7 +350,7 @@ const OrderSelection = ({ route }) => {
               <CheckLabel
                 key={item.id}
                 text={item.label}
-                select={item.price}
+                number={item.price}
                 setCollector={setCollector}
               />
             );
@@ -338,7 +365,7 @@ const OrderSelection = ({ route }) => {
               onPress={minus}
             />
             <Text
-              type="Medium"
+              type="medium"
               color="black-400"
               size={18}
               style={{ padding: 10 }}
@@ -352,14 +379,41 @@ const OrderSelection = ({ route }) => {
               onPress={plius}
             />
           </CounterBox>
-          <TotalBox>
-            <Text type="Bold" color="white-700">
+          <TotalBox onPress={() => orderSheetRef.current.open()}>
+            <Text type="bold" color="white-700">
               {total}
             </Text>
           </TotalBox>
         </Cashier>
-        <View style={{ height: 111 }} />
+        <View style={{ height: 47 }} />
       </RestDescContainer>
+      <Portal>
+        <Bottom bottomSheetRef={orderSheetRef}>
+          <BottomSheetWrapper>
+            <HeaderBox>
+              <Text type="bold" color="black-400" size={24}>
+                {address}
+              </Text>
+            </HeaderBox>
+            <CartBox>
+              <Text type="bold" color="black-400" size={24}>
+                hello
+              </Text>
+              <Button
+                title="log"
+                onPress={() => console.log(collector, total, count)}
+              />
+              {/* <OrderDeliveryCard />
+              <OrderDetailsCard /> */}
+              {/* {collector && <RecommendationsCard icon title={route} />} */}
+            </CartBox>
+            <BtnBox>
+              <LargBtn title="Go to Checkout" onPress={() => handleSubmit()} />
+              <LargBtnLight title="Add items" />
+            </BtnBox>
+          </BottomSheetWrapper>
+        </Bottom>
+      </Portal>
     </Contaienr>
   );
 };

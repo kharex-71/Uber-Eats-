@@ -14,10 +14,11 @@ const RestDetailsCard = ({
     title,
     price,
     recipe,
-    imgUrl
+    imgUrl,
+    onPress
 }) => {
   return (
-    <DetailsContainer>
+    <DetailsContainer onPress={onPress}>
       <LeftContainer>
         {title && <NameOfDish>{title}</NameOfDish>}
         {price && <PriceOfMeal>US${price}</PriceOfMeal>}

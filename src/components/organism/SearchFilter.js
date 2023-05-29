@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import React from 'react'
 
 const SearchFilter = ({data,input,setInput}) => {
@@ -9,7 +9,7 @@ const SearchFilter = ({data,input,setInput}) => {
             setInput
         } else if(item.title.toLowerCase().includes(input.toLowerCase())){
                 <View style={styles.Container}>
-                    <Text>{item.title}</Text>
+                    <>{item.title}</>
                 </View>
         } 
         

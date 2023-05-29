@@ -30,14 +30,14 @@ const Promotion = ({promoIcon,saveUp= false,input,header=false, onPress}) => {
             <SearchInput placeholder="Enter Promo code" icon={require("../../../assets/account/icons/promotions.png")}/>
         </View>}
         <View style={styles.contaienr}>
-            {saveUp && <Text style={{fontFamily:"Bold", fontSize:24}}>US$25 off</Text>}
+            {saveUp && <Text style={{fontWeight:700, fontSize:24}}>US$25 off</Text>}
             {promoIcon && <Image source={require("../../../assets/account/promo.png")}/>}
             <View style={styles.textContaienr}>
-            <Text style={{fontFamily:"Medium",fontSize:14,color:"#545454"}}> 
+            <Text style={{fontWeight: 500,fontSize:14,color:"#545454"}}> 
                     US$25 minimum order Delivery orders only
                     
             </Text>
-            <Text style={{fontFamily:"Medium",fontSize:14,color:"#545454"}}> 
+            <Text style={{fontWeight: 500,fontSize:14,color:"#545454"}}> 
             Use by 29 Jul 2022 8am
                     
             </Text>
@@ -55,10 +55,6 @@ export default Promotion;
 
 const styles = StyleSheet.create({
     headerWrapper:{
-        // display: "flex",
-        // flexDirection: "row",
-        // alignItems: "center",
-        // justifyContent: "space-between",
         marginHorizontal: 15,
         paddingTop: 10,
     },
@@ -66,7 +62,6 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        // justifyContent: "space-between",
     },
     contaienr:{
         borderWidth:2,

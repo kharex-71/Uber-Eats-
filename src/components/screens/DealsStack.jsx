@@ -190,12 +190,11 @@ const dataDeals = {
 const DealsStack = () => {
   const [data, setdata] = useState([]);
   const [sort, setSort] = useState(0);
-
   const fetchData = () => {
     if (sort === 0) {
-      setdata(dataDeals.offers);
+      setdata(data);
     } else if (sort === 1) {
-      setdata(dataDeals.rewards);
+      setdata(data);
     }
   };
 
