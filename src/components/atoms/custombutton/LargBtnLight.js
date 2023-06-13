@@ -21,10 +21,10 @@ export default LargBtnLight
 
 const styles = StyleSheet.create({
     container:{
-        width: 332,
+        width: '100%',
         height: 55,
-        marginBottom: 12,
-        marginTop: 28,
+        marginBottom: 19,
+        // marginTop: 28,
         backgroundColor: "lightgray",
         borderRadius: 5,
         display: "flex", 

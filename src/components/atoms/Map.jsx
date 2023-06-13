@@ -1,58 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
 
 let data = [
   {
-    title: "first",
+    title: "beer",
     location: {
-      latitude: 41.57332357649769,
-      longitude: 44.98004371372484,
+      latitude: 41.57398279192919,
+      longitude: 44.984869557241794,
     },
-    description: "My first Marker",
+    description: "glacier",
   },
   {
-    title: "second",
+    title: "meat",
     location: {
-      latitude: 41.567801233281536,
-      longitude: 44.983391110457404,
+      latitude: 41.569600819650375,
+      longitude: 44.98190638683316,
     },
-    description: "My second Marker",
+    description: "come see",
   },
 ];
 
 const Map = () => {
-  const navigation = useNavigation();
-  const onRegionChange = (region) => {
-    console.log(region);
-  };
+  const [draggCoord, setDraggCoord] = useState({
+    latitude: 41.57183818948648,
+    longitude: 44.981500238992965,
+  });
+  // const navigation = useNavigation();
+  // const onRegionChange = (region) => {
+  //   console.log(region);
+  // };
 
-  const showLocationOfInterest = () => {
-    return data.map((item, index) => {
-      return (
-        <Marker
-          key={index}
-          coordinate={item.location}
-          title={item.title}
-          description={item.description}
-        />
-      );
-    });
-  };
+  // const showLocationOfInterest = () => {
+  //   return data.map((item, index) => {
+  //     return (
+  //       <Marker
+  //         key={index}
+  //         coordinate={item.location}
+  //         title={item.title}
+  //         description={item.description}
+  //       />
+  //     );
+  //   });
+  // };
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        onRegionChange={onRegionChange}
+        // onRegionChange={onRegionChange}
         initialRegion={{
-          latitude: 41.5444421980127,
-          latitudeDelta: 0.00885791432448002,
-          longitude: 45.01166172849341,
-          longitudeDelta: 0.006758276165527377,
+          latitude: 41.57183818948648,
+          latitudeDelta: 0.009621695006437392,
+          longitude: 44.981500238992965,
+          longitudeDelta: 0.007344126379706495,
         }}
       >
-        {showLocationOfInterest()}
+        {/* {showLocationOfInterest()} */}
+        <Marker
+          style={{ width: 100, height: 100 }}
+          draggable
+          coordinate={draggCoord}
+          onDragEnd={(e) => setDraggCoord(e.nativeEvent.coordinate)}
+          pinColor="red"
+        />
       </MapView>
     </View>
   );

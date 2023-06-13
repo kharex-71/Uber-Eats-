@@ -1,13 +1,17 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import "react-native-gesture-handler";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+
 import AppNavigation from "./src/navigation/AppNavigation";
 
 
 
+SplashScreen.preventAutoHideAsync();
+
+
+
 export default function App() {
-  // const [appIsReady, setAppIsReady] = useState(false);
   const [uberFontsLoaded] = useFonts({
     'bold' : require("./assets/fonts/UberMoveTextBold.otf"),
     'light' : require("./assets/fonts/UberMoveTextLight.otf"),
@@ -27,5 +31,7 @@ export default function App() {
   }else{
     SplashScreen.hideAsync();
   }
-  return <AppNavigation/>;
+  return (
+            <AppNavigation/>
+  );
 }

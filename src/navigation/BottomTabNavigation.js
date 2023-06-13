@@ -1,18 +1,22 @@
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import Home from "../components/screens/Home";
-import Browse from "../components/screens/Browse"
-import Baskets from "../components/screens/Baskets"
-import Grocery from "../components/screens/Grocery"
-import AccountNavigation from "./AccountNavigation"
-import * as ROUTES from "../constants/routes";
-
-
+import { useNavigation } from "@react-navigation/native";
+import { Image, Pressable, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+
+import * as ROUTES from "../constants/routes";
+import AccountNavigation from "./AccountNavigation"
+import StackBowse from "./StackBowse";
+import StackGrocery from "./StackGrocery";
+import Baskets from "../components/screens/Baskets"
+import Home from "../components/screens/Home";
+
+const backIcon = require("../../assets/icon/backArrow.png")
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
+  const navigation = useNavigation()
   return (
     <Tab.Navigator 
       screenOptions={({ route }) => ({
@@ -22,11 +26,11 @@ const BottomTabNavigation = () => {
 
           if (route.name === ROUTES.HOME_SCREEN) {
             icon = focused ? "home" : "home-outline";
-          } else if (route.name === ROUTES.BROWSE_SCREEN) {
+          } else if (route.name === ROUTES.BROWSE_STACK) {
             icon = focused ? "eye" : "eye-outline";
           } else if (route.name === ROUTES.BASKETS_SCREEN) {
             icon = focused ? "cart" : "cart-outline";
-          } else if (route.name === ROUTES.GROCERY_SCREEN) {
+          } else if (route.name === ROUTES.STACK_GROCERY) {
             icon = focused ? "fast-food" : "fast-food-outline";       
           } else if (route.name === ROUTES.ACCOUNT_NAVIGATOR_SCREEN) {
             icon = focused ? "person" : "person-outline";
@@ -43,22 +47,27 @@ const BottomTabNavigation = () => {
 
 
       <Tab.Screen
-        name={ROUTES.BROWSE_SCREEN}
-        component={Browse}
-        options={{ title: "Browse", headerShown: false }}
+        name={ROUTES.BROWSE_STACK}
+        component={StackBowse}
+        options={{headerShown: false, title: "Browse"}}
+        
+      />
+      <Tab.Screen
+        name={ROUTES.STACK_GROCERY}
+        component={StackGrocery}
+        options={{headerShown: false, title: "Grocery"}}
+        
       />
       
 
       <Tab.Screen
-        name={ROUTES.GROCERY_SCREEN}
-        component={Grocery}
-        options={{ title: "Grocery" }}
-      />
-
-      <Tab.Screen
         name={ROUTES.BASKETS_SCREEN}
         component={Baskets}
-        options={{ title: "Baskets", headerShown: false }}
+        options={{ title: "Baskets", headerShown: true, headerLeft:()=>(
+          <Pressable>
+          <Image source={backIcon} style={{marginLeft: 16}}/>
+          </Pressable>
+        ) }}
       />
 
       <Tab.Screen

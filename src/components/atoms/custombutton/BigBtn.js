@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 
 const Container = styled.Pressable`
-width: 50%;
+width: 167px;
 ${({light})=> (light ? `background-color: #EEEEEE;` : "")}
 border-radius: 99px;
 display: flex;
@@ -15,20 +15,18 @@ align-items: center;
 const Title = styled.Text`
 font-weight: 500;
 font-size: 14px;
-line-height: 20px;
 color: #000000;
-
 `;
 const SubTitle = styled.Text`
 font-weight: 500;
 font-size: 14px;
-line-height: 20px;
 color: #6B6B6B;
 `;
 const TitleContainer = styled.View`
 display: flex;
 align-items: center;
 justify-content: center;
+height:38px;
 `;
 const Icon = styled.Image``;
 
@@ -36,10 +34,10 @@ const Icon = styled.Image``;
 const BigBtn = ({title,subTitle,iconUrl,light=false, onPress}) => {
     return(
         <Container onPress={onPress} light={light}>
-            {iconUrl && <Icon source={require("../../../../assets/icon/Group.png")}/>}
+            {iconUrl && <Icon source={iconUrl}/>}
             <TitleContainer>
                 <Title>{title}</Title>
-                <SubTitle>{subTitle}</SubTitle>
+                {subTitle && <SubTitle>{subTitle}</SubTitle>}
             </TitleContainer>
         </Container>
     )

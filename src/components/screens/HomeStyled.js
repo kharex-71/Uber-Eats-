@@ -111,7 +111,7 @@ export const SectionTitle = styled.Text`
 font-weight: 700;
 font-size: 24px;
 color: #000000;
-margin: 18px 0;
+margin: 18px 16px;
 `;
 
 export const SectionDeteils = styled.View`
