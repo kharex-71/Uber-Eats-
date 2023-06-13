@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { ScrollView, Text, View, Image } from "react-native";
+import { ScrollView, Text, View, Image, Pressable } from "react-native";
 import * as ROUTES from "../../constants/routes";
 import Screen from "../atoms/screendimensions/Screen";
 import Map from "../atoms/Map";
@@ -21,6 +21,8 @@ import {
   ToggleButton,
 } from "./HomeStyled";
 import Icon from "react-native-vector-icons/Ionicons";
+
+let userIcone = require("../../../assets/icon/Group.png");
 
 const data = {
   restourant: {
@@ -161,11 +163,12 @@ const data = {
 const star = require("../../../assets/icon/star.png");
 
 const RestourantDetails = ({ route }) => {
-  const [service, setService] = useState(false);
+  const [service, setService] = useState(true);
   const [sort, setSort] = useState(0);
   const navigation = useNavigation();
   const rest = data.restourant;
   const stuff = route.params;
+  console.log(stuff);
 
   const fetchData = () => {
     if (sort === 0) {
@@ -265,7 +268,7 @@ const RestourantDetails = ({ route }) => {
           </HeaderContainer>
 
           <ButtonsContainer>
-            <BigBtn title="Group order" iconUrl light />
+            <BigBtn title="Group order" iconUrl={userIcone} light />
             <ToggleButton>
               {btns.map((item) => {
                 return (
@@ -358,6 +361,15 @@ const RestourantDetails = ({ route }) => {
           </SectionDeteils>
         </ScrollView>
       </DetWrapper>
+      <View>
+        <View>
+          <Pressable style={{ alignItems: "center" }}>
+            <Text style={{ color: "#4BA457" }}>
+              Save US$25. Conditions apply.
+            </Text>
+          </Pressable>
+        </View>
+      </View>
     </Screen>
   );
 };

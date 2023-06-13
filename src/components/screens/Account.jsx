@@ -1,21 +1,24 @@
-import React from "react";
-import styled from "styled-components/native";
+import React, { useState, useEffect } from "react";
 import { Text, View, Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Button from "../atoms/custombutton/Button";
-import Screen from "../atoms/screendimensions/Screen";
-import SettingsCard from "../organism/SettingsCard";
+import styled from "styled-components/native";
+
 import * as ROUTES from "../../constants/routes";
 
-const Container = styled(View)`
+import Screen from "../atoms/screendimensions/Screen";
+import SettingsCard from "../organism/SettingsCard";
+import { getData } from "../../helpers/SaveInformationProvided";
+
+const Container = styled.View`
   flex: 1;
+  /* background-color: ${{}}; */
 `;
 
 const UserContainer = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* margin: 25px 15px 40px 19px; */
+  margin: 25px 15px 40px 19px;
 `;
 
 const SettingsContaienr = styled.View`
@@ -60,7 +63,7 @@ const account = [
   {
     id: 6,
     title: "Promotions",
-    value: ROUTES.PROMOTION_DETAILS,
+    value: ROUTES.PROMOTION_SCREEN,
     icon: require("../../../assets/account/icons/promotions.png"),
   },
   {
@@ -71,7 +74,7 @@ const account = [
   {
     id: 8,
     title: "Settings",
-    value: ROUTES.SETTINGS_DETAILS,
+    value: ROUTES.SETTINGS_SCREEN,
     icon: require("../../../assets/account/icons/settings.png"),
   },
   {
@@ -82,6 +85,19 @@ const account = [
 
 const Account = () => {
   const navigation = useNavigation();
+  const [user, setUser] = useState();
+
+  const getUserData = async () => {
+    const res = await getData("user");
+    if (res) {
+      setUser(res);
+      return;
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   const handlePress = (str) => {
     navigation.navigate(str);
@@ -95,7 +111,9 @@ const Account = () => {
           >
             <Image source={require("../../../assets/account/user.png")} />
           </Pressable>
-          <Text style={{ marginLeft: 15 }}>John Doe</Text>
+          <Text style={{ marginLeft: 15 }}>
+            {user ? user.name : "john doe"}
+          </Text>
         </UserContainer>
         <SettingsContaienr>
           {account.map((item) => {

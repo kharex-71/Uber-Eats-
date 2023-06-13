@@ -1,16 +1,23 @@
-import { Image, StyleSheet } from 'react-native'
+import {Pressable, Image, StyleSheet, Text } from 'react-native'
 import React from 'react'
 
 
 const backIcon = require("../../../../assets/icon/backArrow.png")
 
 
-const BackButton = ({title}) => {
+const BackButton = ({title,iconUrl,onPress}) => {
   return (
-    <Image source={backIcon} title={title}/>
+    <Pressable onPress={onPress}>
+    <Image style={styles.icon} source={iconUrl} title={title}/>
+    {/* <Text>{title}</Text> */}
+    </Pressable>
   )
 }
 
 export default BackButton
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  icon: {
+    // marginHorizontal: 17,
+  }
+})

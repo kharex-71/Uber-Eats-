@@ -4,28 +4,28 @@ import { Portal } from "react-native-portalize";
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
+
 import * as ROUTES from "../../constants/routes";
-import Text from "../atoms/fontsText/Text";
+import Bottom from "../atoms/BottomSheet/Bottom";
 import Screen from "../atoms/screendimensions/Screen";
-import PromotionWidget from "../molecules/PromotionWidget";
+import Text from "../atoms/fontsText/Text";
 import RadioLabel from "../molecules/RadioLabel";
 import CheckLabel from "../molecules/CheckLabel";
-import Bottom from "../atoms/BottomSheet/Bottom";
+import PromotionWidget from "../molecules/PromotionWidget";
 import LargBtn from "../atoms/custombutton/LargBtn";
 import LargBtnLight from "../atoms/custombutton/LargBtnLight";
+import RecommendationsCard from "../molecules/RecommendationsCard";
+import CardOfPurchasedProducts from "../molecules/CardOfPurchasedProducts";
 import OrderDeliveryCard from "../molecules/OrderDeliveryCard";
 import OrderDetailsCard from "../molecules/OrderDetailsCard";
-import RecommendationsCard from "../molecules/RecommendationsCard";
-import Button from "../atoms/custombutton/Button";
-
-const BackIcon = require("../../../assets/icon/backArrow.png");
 
 const Contaienr = styled(Screen)``;
 const Price = styled(Text)`
   margin: 8px 0;
 `;
 const RestDescContainer = styled.ScrollView`
-  padding: 40px 10px 0px 10px;
+  padding: 7px 10px 0 10px;
+  margin-bottom: 40px;
 `;
 
 const Required = styled.View`
@@ -63,13 +63,27 @@ const TotalBox = styled.Pressable`
 `;
 
 const BottomSheetWrapper = styled.View`
-  padding: 33px 16px 67px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
-const HeaderBox = styled.View``;
-const CartBox = styled.View``;
+const HeaderBox = styled.View`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom-width: 1px;
+  border-color: #eeeeee;
+`;
+const CartBox = styled.View`
+  margin: 16px;
+`;
 const BtnBox = styled.View`
   display: flex;
   align-items: center;
+  margin: 0 16px;
+`;
+const PurchaseBox = styled.View`
+  margin: 27px 16px 16px;
 `;
 
 const obj = {
@@ -223,6 +237,30 @@ const obj = {
   ],
 };
 
+const orderData = [
+  {
+    id: 0,
+    price: 0,
+    label: "Cantina Crispy Chicken",
+    subTitle: "Buy 1, get 1 free (add 2 to basket)",
+    sale: false,
+  },
+  {
+    id: 1,
+    price: 0,
+    label: "Spicy Cheesy Double",
+    subTitle: "Buy 1, get 1 free (add 2 to basket)",
+    sale: false,
+  },
+  {
+    id: 2,
+    price: 0,
+    label: "Mango Freeze",
+    subTitle: "Buy 1, get 1 free (add 2 to basket)",
+    sale: false,
+  },
+];
+
 const OrderSelection = ({ route, navigation: { goBack } }) => {
   const navigation = useNavigation();
   const { restourantName, price, recipe, address } = route.params;
@@ -230,7 +268,7 @@ const OrderSelection = ({ route, navigation: { goBack } }) => {
   const [collector, setCollector] = useState(0);
   const [count, setCount] = useState(1);
   const orderSheetRef = useRef();
-  // console.log(route.params);
+
   const minus = () => {
     if (count > 1) {
       setCount(count - 1);
@@ -246,7 +284,8 @@ const OrderSelection = ({ route, navigation: { goBack } }) => {
   }, [count, collector]);
 
   const handleSubmit = () => {
-    navigation.navigate(ROUTES.DELIVERY_DETAILS), orderSheetRef.current.close();
+    navigation.navigate(ROUTES.DELIVERY_DETAILS, { total, count }),
+      orderSheetRef.current.close();
   };
 
   // const isChecked = (id, amount, arr) => {
@@ -264,10 +303,7 @@ const OrderSelection = ({ route, navigation: { goBack } }) => {
 
   return (
     <Contaienr>
-      <RestDescContainer>
-        <Pressable style={{ paddingBottom: 10 }} onPress={() => goBack()}>
-          <Image source={BackIcon} />
-        </Pressable>
+      <RestDescContainer showsVerticalScrollIndicator={false}>
         <View>
           <Text type="bold" size={24} color="black-400">
             {restourantName}
@@ -293,9 +329,7 @@ const OrderSelection = ({ route, navigation: { goBack } }) => {
             </Text>
           </View>
         </Required>
-
         <RadioLabel arry={obj.sauce} setCollector={setCollector} />
-
         <Required>
           <Text type="medium" color="black-400" size={18}>
             Choose your size
@@ -381,35 +415,59 @@ const OrderSelection = ({ route, navigation: { goBack } }) => {
           </CounterBox>
           <TotalBox onPress={() => orderSheetRef.current.open()}>
             <Text type="bold" color="white-700">
-              {total}
+              Add {count} to basket US$ {total}
             </Text>
           </TotalBox>
         </Cashier>
         <View style={{ height: 47 }} />
       </RestDescContainer>
       <Portal>
-        <Bottom bottomSheetRef={orderSheetRef}>
+        <Bottom bottomSheetRef={orderSheetRef} modalHeight={575}>
           <BottomSheetWrapper>
             <HeaderBox>
-              <Text type="bold" color="black-400" size={24}>
-                {address}
-              </Text>
+              <View
+                style={{
+                  paddingHorizontal: 44,
+                  paddingVertical: 16,
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  type="bold"
+                  color="black-400"
+                  size={24}
+                  style={{ textAlign: "center" }}
+                >
+                  {address}
+                </Text>
+                <Text type="medium" color="secondary-600" size={14}>
+                  You‘re saving US$25
+                </Text>
+              </View>
             </HeaderBox>
+            <PurchaseBox>
+              <CardOfPurchasedProducts quantity={count} price={total} />
+            </PurchaseBox>
             <CartBox>
-              <Text type="bold" color="black-400" size={24}>
-                hello
-              </Text>
-              <Button
-                title="log"
-                onPress={() => console.log(collector, total, count)}
-              />
-              {/* <OrderDeliveryCard />
-              <OrderDetailsCard /> */}
-              {/* {collector && <RecommendationsCard icon title={route} />} */}
+              {orderData.map((item) => {
+                return (
+                  <RecommendationsCard
+                    key={item.id}
+                    title={item.label}
+                    subTitle={item.subTitle}
+                    icon
+                    onPress={() => console.log("add item")}
+                  />
+                );
+              })}
             </CartBox>
             <BtnBox>
               <LargBtn title="Go to Checkout" onPress={() => handleSubmit()} />
-              <LargBtnLight title="Add items" />
+              <LargBtnLight
+                title="Add items"
+                onPress={() => console.log(collector, total, count)}
+              />
             </BtnBox>
           </BottomSheetWrapper>
         </Bottom>

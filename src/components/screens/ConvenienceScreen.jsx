@@ -1,9 +1,10 @@
 import { Image, FlatList } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import Screen from "../atoms/screendimensions/Screen";
 import Text from "../atoms/fontsText/Text";
 import ShopCard from "../organism/ShopCard";
+import { store, shop } from "../../data/appData";
 
 const backIcon = require("../../../assets/icon/backArrow.png");
 const RaitingIcon = require("../../../assets/icon/ratingIconBlack.png");
@@ -47,95 +48,9 @@ const ShopContainer = styled.View`
   padding-right: 21px;
 `;
 
-const store = [
-  {
-    id: 0,
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-shop/StoreCard1.png"),
-  },
-  {
-    id: 1,
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-shop/StoreCard2.png"),
-  },
-  {
-    id: 2,
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-shop/StoreCard1.png"),
-  },
-  {
-    id: 3,
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-shop/StoreCard2.png"),
-  },
-];
-
-const shop = [
-  {
-    id: 0,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-1.png"),
-  },
-  {
-    id: 1,
-    title: "Orange Inn",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-11.png"),
-  },
-  {
-    id: 2,
-    title: "Bricks Guards",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-2.png"),
-  },
-  {
-    id: 3,
-    title: "7Eleven",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-3.png"),
-  },
-  {
-    id: 4,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-4.png"),
-  },
-  {
-    id: 5,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-5.png"),
-  },
-  {
-    id: 6,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-6.png"),
-  },
-  {
-    id: 7,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-7.png"),
-  },
-  {
-    id: 8,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-8.png"),
-  },
-  {
-    id: 9,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-9.png"),
-  },
-  {
-    id: 12,
-    title: "Begs & Megs",
-    open: "Opens at 08:00",
-    imgUrl: require("../../../assets/cartScreen/shopCart/shop-10.png"),
-  },
-];
-
 const ConvenienceScreen = ({ navigation: { goBack } }) => {
+  const [store1, setStore1] = useState(store);
+  const [shop2, setShop2] = useState(shop);
   return (
     <Contaienr>
       <MainWrapper>
@@ -159,7 +74,7 @@ const ConvenienceScreen = ({ navigation: { goBack } }) => {
                 return <Image key={item.id} source={item.imgUrl} />;
               })} */}
               <FlatList
-                data={store}
+                data={store1}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                   <Image source={item.imgUrl} style={{ marginLeft: 10 }} />
@@ -171,7 +86,7 @@ const ConvenienceScreen = ({ navigation: { goBack } }) => {
           </StoreInfo>
         </HeaderWrapper>
         <ShopContainer>
-          {shop.map((item) => {
+          {shop2.map((item) => {
             return (
               <ShopCard
                 key={item.id}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { ActivityIndicator, Image, Text, View } from "react-native";
 import Screen from "../atoms/screendimensions/Screen";
 import HeaderBtn from "../atoms/custombutton/HeaderBtn";
 import ShopCard from "../organism/ShopCard";
@@ -101,7 +100,12 @@ const shopData = {
 };
 
 const Baskets = () => {
-  const [data, setData] = useState(false);
+  const [order, setOrder] = useState(false);
+
+  const handlePress = (light) => {
+    console.log("Order");
+    light = true;
+  };
   return (
     <Screen>
       <BasketsContainer>
@@ -111,12 +115,27 @@ const Baskets = () => {
               light
               title="Order"
               iconLeft={require("../../../assets/icon/orders.png")}
-              onPress={() => console.log("Order")}
+              onPress={() => setOrder(true)}
             />
           </Order>
           <HeaderTitle>Carts</HeaderTitle>
         </HeaderContainer>
-        {data && (
+        {order ? (
+          <ScrollView>
+            {shopData.shoppingCart.map((item) => {
+              return (
+                <ShopCard
+                  key={item.idx}
+                  title={item.title}
+                  price={item.price}
+                  subTitle={item.desc}
+                  imgUrl={item.imgUrl}
+                  iconUrl={icon}
+                />
+              );
+            })}
+          </ScrollView>
+        ) : (
           <Content>
             <ImageContainer>
               <Picture
@@ -134,20 +153,6 @@ const Baskets = () => {
             />
           </Content>
         )}
-        <ScrollView>
-          {shopData.shoppingCart.map((item) => {
-            return (
-              <ShopCard
-                key={item.idx}
-                title={item.title}
-                price={item.price}
-                subTitle={item.desc}
-                imgUrl={item.imgUrl}
-                iconUrl={icon}
-              />
-            );
-          })}
-        </ScrollView>
       </BasketsContainer>
     </Screen>
   );

@@ -1,7 +1,10 @@
+import React from "react";
 import styled from "styled-components/native";
 
 const Container = styled.Pressable`
-  background: ${({light})=> (light ? "#000000" : "#EEEEEE")};
+  /* background-color: ${({light})=> (light ? "#000000" : "EEEEEE")}; */
+  background-color: lightgrey;
+  border: ${({light})=> ( light ? "2px" : "0")};
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -10,17 +13,18 @@ const Container = styled.Pressable`
 `;
 
 const Title = styled.Text`
-  color: ${({light})=> (light ?  "#EEEEEE" : "#000000" )};
+  /* color: ${({light})=> (light ? "#FFFFFF" : "#000000")}; */
+  color: #000000;
   font-size: 16px;
-  padding: 8px 20px ;
-  
+  padding: 8px 15px;
+  font-weight: 600;
 `;
 
 const Icon = styled.Image`
 ${({iconLeft})=> (iconLeft ? "margin-right: 10px;" : "margin-left: 16px;")}
 `;
 
-const HeaderBtn = ({ title, onPress, light=false,iconLeft,iconRight, ...otherProps}) => {
+const HeaderBtn = ({ title, onPress, light=false ,iconLeft,iconRight, ...otherProps}) => {
   return (
     <Container onPress={onPress} light={light} {...otherProps} >
       {iconLeft && <Icon source={iconLeft}/>}

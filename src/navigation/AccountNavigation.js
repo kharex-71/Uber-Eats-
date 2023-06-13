@@ -1,12 +1,15 @@
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import * as ROUTES from "../constants/routes";
-import Settings from "../components/screens/Settings";
-import SettingsDetails from "../components/screens/SettingsDetails";
 import Account from "../components/screens/Account"
+import Settings from "../components/screens/Settings";
+import PromotionScreen from "../components/screens/PromotionScreen";
+
+
 const Stack = createNativeStackNavigator();
 
-function AccountNavigation() {
+function AccountNavigation({ navigation: { goBack } }) {
   return (
     <Stack.Navigator >
       <Stack.Screen
@@ -17,11 +20,12 @@ function AccountNavigation() {
       <Stack.Screen
         name={ROUTES.SETTINGS_SCREEN}
         component={Settings}
-        options={{ headerShown: false }}
+        options={{ headerShown: true,title: "Settings"}}
       />
       <Stack.Screen
-        name={ROUTES.SETTINGS_DETAILS}
-        component={SettingsDetails}
+        name={ROUTES.PROMOTION_SCREEN}
+        component={PromotionScreen}
+        options={{ headerShown: true,title: "Promotion"}}
       />
     </Stack.Navigator>
   );

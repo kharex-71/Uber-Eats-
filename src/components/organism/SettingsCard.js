@@ -19,7 +19,7 @@ color: #000000;
 
 const SubTitle = styled.Text`
 font-size: 12px;
-color: #6B6B6B
+color: #6B6B6B;
 `;
 const TextContaienr = styled.View`
 margin-left: 28px;

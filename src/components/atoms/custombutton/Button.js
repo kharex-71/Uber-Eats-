@@ -2,23 +2,29 @@ import styled from "styled-components/native";
 
 const Container = styled.Pressable`
   width: 80%;
-  height: 60px;
-  background: #54924F;
-  border-radius: 16px;
+  height: 50px;
+  background-color: ${props => props.$light ? "#a9a9a9" : "#1e90ff"} ;
+  border-radius: 100px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-bottom: 14px;
 `;
 
 const Title = styled.Text`
-  color: ${props => props.$light ? "#54924F" : "#C7DAC5"};
-  font-size: 28px;
+  color: ${props => props.$light ? "#FFFFFF" : "#000000"};
+  font-size: 22px;
 `;
 
-const Button = ({ title, onPress}) => {
+const Icon = styled.Image`
+margin-right: 5px;
+`;
+
+const Button = ({ title, onPress, $light,icon}) => {
   return (
-    <Container onPress={onPress} >
+    <Container onPress={onPress} $light={$light}>
+      {icon && <Icon source={icon}/>}
       <Title >{title}</Title>
     </Container>
   );

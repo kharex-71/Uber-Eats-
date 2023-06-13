@@ -1,6 +1,7 @@
 import React from "react";
 import { Platform, Dimensions } from "react-native";
 import styled from "styled-components";
+import { ThemeContext } from "../../../global/ThemeManager";
 
 const windowWidth = Dimensions.get("screen").width;
 const windowHeight = Dimensions.get("screen").height;
@@ -21,10 +22,9 @@ const Container = styled.SafeAreaView`
   /* justify-content: center;
   align-items: center;
   flex-direction: column; */
-  background: #ffffff;
 `;
 
-const Screen = ({ children, ...otherProps }) => {
+const Screen = ({ mode, children, ...otherProps }) => {
   return (
     <MainWrapper
       behavior={Platform.OS === "ios" ? "padding" : "height"}

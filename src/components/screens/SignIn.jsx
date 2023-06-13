@@ -1,23 +1,25 @@
+import React, { useRef, useState, useContext } from "react";
 import { View, Image, TextInput, ScrollView, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import PhoneInput from "react-native-phone-number-input";
 import styled from "styled-components/native";
+import PhoneInput from "react-native-phone-number-input";
+
 import * as ROUTES from "../../constants/routes";
-import { useRef, useState } from "react";
-import Button from "../atoms/custombutton/Button";
 import Screen from "../atoms/screendimensions/Screen";
 import Text from "../atoms/fontsText/Text";
 import LargBtn from "../atoms/custombutton/LargBtn";
+import { login } from "../../helpers/login";
+import { PracticeContext } from "../../global/UserContext";
 
 const Container = styled(Screen)``;
 
 const Picture = styled.Image`
   width: 100%;
-  height: 634px;
 `;
 
 const Wrapper = styled.ScrollView`
   background-color: #ffffff;
+  height: 100%;
 `;
 
 const SignInCalidor = styled.View`
@@ -35,7 +37,8 @@ const MandatoryField = styled.Pressable`
 
 const MessageBox = styled.View``;
 
-const SignIn = ({ navigate }) => {
+const SignIn = () => {
+  const { user } = useContext(PracticeContext);
   const [value, setValue] = useState("");
   const [formattedValue, setFormattedValue] = useState("");
   const [valid, setValid] = useState(false);
@@ -43,16 +46,28 @@ const SignIn = ({ navigate }) => {
   const phoneInput = useRef(null);
   const navigation = useNavigation();
 
-  const onhandlePressValue = () => {
-    if (value === "") {
-      return alert("mobile number");
-    } else {
+  // const userLogIn = async () => {
+  //   const res = await login();
+  //   if (res) {
+  //     userupdate(res);
+  //     alert("WARN")
+  //   }
+  // };
+
+  const onhandlePressValue = async () => {
+    const res = await login();
+
+    if (res) {
       navigation.navigate(ROUTES.DRAWER_NAVIGATOR);
+      console.log(res);
+      console.log(user);
+    } else {
+      return alert("There is no answer");
     }
   };
 
   return (
-    <Container>
+    <Container showsVerticalScrollIndicator={false}>
       <Wrapper>
         <View>
           {valid ? (
@@ -67,9 +82,6 @@ const SignIn = ({ navigate }) => {
                   Enter your mobile number
                 </Text>
               </View>
-              {/* <View>
-                <LargBtn />
-              </View> */}
             </View>
           ) : (
             <View>
@@ -82,10 +94,6 @@ const SignIn = ({ navigate }) => {
                 <Text type="bold" size={30} color="black-400">
                   Use your uber account to get started
                 </Text>
-                {/* <Button
-          title="Welcome!"
-          onPress={() => navigation.navigate(ROUTES.DRAWER_NAVIGATOR)}
-        /> */}
                 {showMessage && (
                   <MessageBox>
                     <Text type="medium" size={14} color="black-400">
@@ -94,9 +102,6 @@ const SignIn = ({ navigate }) => {
                     <Text type="medium" size={14} color="black-400">
                       Formatted Value : {formattedValue}
                     </Text>
-                    {/* <Text type="medium" size={14} color="black-400">
-                      Valid : {valid ? "true" : "false"}
-                    </Text> */}
                   </MessageBox>
                 )}
               </SignInCalidor>

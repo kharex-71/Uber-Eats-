@@ -22,7 +22,7 @@ const Txt = styled.Text`
       case "primary-600":
         return "#44954F";
       case "white-700":
-        return "#B5B5B5";
+        return "#FFFFFF";
       case "black-400":
         return "#333333";
       case "gray-700":
