@@ -17,7 +17,9 @@ let dollarIcon = require("../../../assets/grocery/dollarcoin.png");
 let rightArrowIcon = require("../../../assets/icon/back.png");
 
 const Container = styled(Screen)``;
-const StoresWrapper = styled.ScrollView``;
+const StoresWrapper = styled.ScrollView`
+  background-color: #ffffff;
+`;
 const Header = styled.View`
   display: flex;
   align-items: center;

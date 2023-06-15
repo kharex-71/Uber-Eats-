@@ -9,7 +9,7 @@ const windowHeight = Dimensions.get("screen").height;
 const MainWrapper = styled.KeyboardAvoidingView`
   display: flex;
   height: 100%;
-  /* background: #ffffff; */
+  background: #ffffff;
 `;
 
 const Background = styled.ImageBackground`

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import * as ROUTES from "../../constants/routes";
@@ -34,9 +34,12 @@ const RegistrationPage = () => {
         </Text>
       </View>
       <View style={styles.wrapper}>
-        <View style={styles.imageBox}>
+        <Pressable
+          style={styles.imageBox}
+          onPress={() => navigation.navigate(ROUTES.DRAWER_NAVIGATOR)}
+        >
           <LoginScreenImage />
-        </View>
+        </Pressable>
         <View style={styles.textBox}>
           <Text style={styles.txt}>Let's get started</Text>
         </View>

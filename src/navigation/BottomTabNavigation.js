@@ -49,7 +49,7 @@ const BottomTabNavigation = () => {
       <Tab.Screen
         name={ROUTES.BROWSE_STACK}
         component={StackBowse}
-        options={{headerShown: false, title: "Browse"}}
+        options={{headerShown: false,title: "Browse"}}
         
       />
       <Tab.Screen

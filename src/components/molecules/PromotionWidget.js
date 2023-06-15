@@ -1,15 +1,18 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const PromotionWidget = () => {
+let prmImg =require("../../../assets/account/promoDels.png")
+
+const PromotionWidget = ({imgIcon=true,title,subTitle}) => {
   return (
     <View style={styles.container}>
         <View style={styles.text}>
-            <Text style={{fontFamily: "bold", fontSize: 16, paddingBottom: 8}}>Promotion applied</Text>
+            <Text style={{fontFamily: "bold", fontSize: 16, paddingBottom: 8}}>{title}</Text>
             <Text style={{fontFamily: "medium", fontSize: 16}}>View basket for final discount</Text>
         </View>
         <View style={styles.icon}>
-            <Image source={require("../../../assets/icon/promoIcon.png")}/>
+          {imgIcon ? (<Image source={require("../../../assets/icon/promoIcon.png")}/>) : (<Image source={prmImg}/>)}
+            
         </View>
     </View>
   )

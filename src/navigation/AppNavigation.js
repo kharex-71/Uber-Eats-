@@ -94,7 +94,7 @@ const AppNavigation = () => {
         <Stack.Screen
           name={ROUTES.DELIVERY_DETAILS}
           component={DeliveryDetails}
-          options={{ headerShown: true, title: "",}}
+          options={{ headerShown: true, headerLargeTitle: "Delivery Details"}}
         />
         <Stack.Screen 
           options={{
