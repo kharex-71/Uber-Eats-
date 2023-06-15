@@ -30,20 +30,20 @@ const Promotion = ({promoIcon,saveUp= false,input,header=false, onPress}) => {
             <SearchInput placeholder="Enter Promo code" icon={require("../../../assets/account/icons/promotions.png")}/>
         </View>}
         <View style={styles.contaienr}>
-            {saveUp && <Text style={{fontWeight:700, fontSize:24}}>US$25 off</Text>}
-            {promoIcon && <Image source={require("../../../assets/account/promo.png")}/>}
+            <View style={{display: "flex", flexDirection: "row",justifyContent: "space-between"}}>
+                {saveUp && <Text style={{fontWeight:700, fontSize:24}}>US$25 off</Text>}
+                {promoIcon && <Image source={require("../../../assets/account/promo.png")}/>}
+            </View>
             <View style={styles.textContaienr}>
-            <Text style={{fontWeight: 500,fontSize:14,color:"#545454"}}> 
-                    US$25 minimum order Delivery orders only
-                    
-            </Text>
-            <Text style={{fontWeight: 500,fontSize:14,color:"#545454"}}> 
-            Use by 29 Jul 2022 8am
-                    
-            </Text>
+                <Text style={{fontWeight: 500,fontSize:14,color:"#545454"}}> 
+                    US$25 minimum order Delivery orders only     
+                </Text>
+                <Text style={{fontWeight: 500,fontSize:14,color:"#545454"}}> 
+                    Use by 29 Jul 2022 8am       
+                </Text>
             </View>
             <View style={{flexDirection:"row"}}>
-                <HeaderBtn title="Selected" green/>
+                <HeaderBtn title="Selected" />
                 <HeaderBtn title="Detail" style={{marginHorizontal: 7}}/>
             </View>
         </View>

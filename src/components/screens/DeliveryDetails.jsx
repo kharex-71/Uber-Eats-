@@ -16,7 +16,9 @@ let icon = require("../../../assets/icon/back.png");
 let plius = require("../../../assets/icon/Plusplusi.png");
 
 const Contaienr = styled(Screen)``;
-const Wrapper = styled.ScrollView``;
+const Wrapper = styled.ScrollView`
+  height: 100%;
+`;
 const HeaderContainer = styled.View`
   display: flex;
   flex-direction: column;
@@ -109,6 +111,7 @@ const DeliveryDetails = ({ navigation, route }) => {
       id: 0,
       value: 1,
       title: "Delivery",
+      rame: true,
     },
     {
       id: 1,
@@ -116,17 +119,33 @@ const DeliveryDetails = ({ navigation, route }) => {
       title: "Pickup",
     },
   ];
+  const heandlePress = (num) => {
+    if (num === 1) {
+      console.log("one");
+    } else if (num === 2) {
+      console.log("two");
+    } else {
+      console.log("error");
+    }
+  };
 
   return (
     <Contaienr>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <Wrapper showsVerticalScrollIndicator={false}>
         <HeaderContainer>
           <Text type="bold" color="black-400" size={36}>
             Delivery Details
           </Text>
           <ToggleButton>
             {btn.map((item) => {
-              return <BigBtn key={item.id} title={item.title} light />;
+              return (
+                <BigBtn
+                  key={item.id}
+                  title={item.title}
+                  onPress={() => heandlePress(item.value)}
+                  light={item.rame}
+                />
+              );
             })}
           </ToggleButton>
         </HeaderContainer>
@@ -212,7 +231,7 @@ const DeliveryDetails = ({ navigation, route }) => {
             onPress={() => navigation.navigate(ROUTES.TRACK_ORDER_SCREEN)}
           />
         </View>
-      </ScrollView>
+      </Wrapper>
     </Contaienr>
   );
 };

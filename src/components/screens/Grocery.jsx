@@ -10,6 +10,7 @@ import { data } from "../../data/appData";
 const Container = styled(Screen)``;
 const MainBox = styled.ScrollView`
   width: 100%;
+  background-color: #ffffff;
 `;
 const GroceryStoresScreen = styled.View``;
 

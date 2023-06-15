@@ -17,6 +17,7 @@ function StackBowse({ navigation: { goBack } }) {
       <Stack.Screen
         name={ROUTES.BROWSE_SCREEN}
         component={Browse}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name={ROUTES.DEALS_STACK}
