@@ -1,15 +1,15 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import * as ROUTES from "../constants/routes";
 import Browse from "../components/screens/Browse"
 import DealsStack from "../components/screens/DealsStack";
+import * as ROUTES from "../constants/routes";
 
 
 
 const Stack = createNativeStackNavigator();
 
-function StackBowse({ navigation: { goBack } }) {
+function StackBowse() {
   return (
     <Stack.Navigator 
       screenOptions={{headerShadowVisible: false,}}

@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
 import React, { useEffect } from "react";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import * as ROUTES from "../../constants/routes";
-import Screen from "../atoms/screendimensions/Screen";
-import LoginScreenImage from "../images/LoginScreenImages";
+
 import Button from "../atoms/custombutton/Button";
+import LoginScreenImage from "../images/LoginScreenImages";
+import Screen from "../atoms/screendimensions/Screen";
+import * as ROUTES from "../../constants/routes";
 
 const RegistrationPage = () => {
   const navigation = useNavigation();
@@ -29,7 +30,7 @@ const RegistrationPage = () => {
     <Screen>
       <View style={styles.logoBox}>
         <Text style={styles.myLogo}>
-          Space
+          Uber-Eats
           <View style={styles.dot} />
         </Text>
       </View>

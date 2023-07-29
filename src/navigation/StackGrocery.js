@@ -2,11 +2,11 @@ import React from "react";
 import {View,Pressable,Image} from "react-native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import * as ROUTES from "../constants/routes";
+import BackButton from "../components/atoms/custombutton/BackButton";
 import Grocery from "../components/screens/Grocery"
 import StoreScreen from "../components/screens/StoreScreen";
 import Text from "../components/atoms/fontsText/Text";
-import BackButton from "../components/atoms/custombutton/BackButton";
+import * as ROUTES from "../constants/routes";
 
 const backIcon = require("../../assets/icon/backArrow.png")
 const user = require("../../assets/icon/user.png")

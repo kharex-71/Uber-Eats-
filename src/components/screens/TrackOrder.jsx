@@ -1,19 +1,17 @@
-import { Image, View } from "react-native";
 import React, { useState, useEffect } from "react";
+import { Image} from "react-native";
 import styled from "styled-components/native";
+
 import Screen from "../atoms/screendimensions/Screen";
 import Text from "../atoms/fontsText/Text";
 import Map from "../atoms/Map";
 import TrackHdrBtn from "../atoms/custombutton/TrackHdrBtn";
 
-const car = require("../../../assets/order/Car.png");
 const courier = require("../../../assets/order/Courier.png");
-const dish = require("../../../assets/order/dish.png");
 const evaluationpage = require("../../../assets/order/Evaluationpage.png");
 const person = require("../../../assets/order/person.png");
 const likeIcon = require("../../../assets/order/likeIcon.png");
 const mobile = require("../../../assets/order/mobile.png");
-const preparation = require("../../../assets/order/preparation.png");
 const tip = require("../../../assets/order/tip.png");
 
 const Wrapper = styled.View``;
@@ -91,7 +89,6 @@ const BtnBox = styled.View`
   align-items: center;
   flex-direction: row;
 `;
-const BtnCall = styled.View``;
 
 const TrackOrder = () => {
   const [preparation, setPreparation] = useState(true);

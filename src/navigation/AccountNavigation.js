@@ -1,10 +1,10 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import * as ROUTES from "../constants/routes";
 import Account from "../components/screens/Account"
 import Settings from "../components/screens/Settings";
 import PromotionScreen from "../components/screens/PromotionScreen";
+import * as ROUTES from "../constants/routes";
 
 
 const Stack = createNativeStackNavigator();

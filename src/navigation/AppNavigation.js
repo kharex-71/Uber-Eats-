@@ -1,16 +1,12 @@
 import * as React from "react";
-import { View,Pressable,Image} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-// import { createStackNavigator } from "@react-navigation/stack";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import styled from "styled-components/native";
+import { NavigationContainer } from "@react-navigation/native";
+import { View} from "react-native";
 import {Host} from "react-native-portalize";
-import {Button} from "react-native";
 
 import * as ROUTES from "../constants/routes";
 import DrawerNavigator from "./DrawerNavigator";
 import BackButton from "../components/atoms/custombutton/BackButton"
-import Screen from "../components/atoms/screendimensions/Screen";
 import TrackHdrBtn from "../components/atoms/custombutton/TrackHdrBtn";
 
 import DealsStack from "../components/screens/DealsStack";
@@ -20,51 +16,22 @@ import OrderSelection from "../components/screens/OrderSelection"
 import RestourantDetails from "../components/screens/RestourantDetails";
 import TrackOrder from "../components/screens/TrackOrder";
 import SignInStack from "./SignInStack"
-import {ThemeProvider,ThemeContext} from "../global/ThemeManager";
 
 
 
-const backIcon = require("../../assets/icon/backArrow.png")
-const user = require("../../assets/icon/user.png")
-const cart = require("../../assets/icon/Cart1.png")
 
-const Container = styled(Screen)``;
 
 const Stack = createNativeStackNavigator();
 
 
-const ToggleBtn = () => {
-  const { toggleTheme } = React.useContext(ThemeContext);
-
-  return(
-    <Button 
-          color="#fff"
-          title="THEME" 
-          onPress={()=>{
-            toggleTheme()
-          }}/>
-  )
-}
 const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Host>
       <Stack.Navigator screenOptions={{ headerShown: false
-        // title: "",
-        // headerBackVisible: false, 
-        // headerShown: true,
-        // headerTransparent: true,
-        // headerStyle: {
-        // backgroundColor: '#416F71',
-        // },
-        // headerShadowVisible: false ,
-        // headerRight:()=>(<ToggleBtn/>)
+        
         }}>
-        {/* <Stack.Screen
-          name={ROUTES.SIGN_IN_STACK}
-          options={{ headrShown: false }}
-          component={SignInStack}
-        /> */}
+        
         
 
         <Stack.Screen

@@ -1,9 +1,9 @@
 import React, { useRef, useState, useContext } from "react";
-import { View, Image, TextInput, ScrollView, Pressable } from "react-native";
+import { View} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components/native";
-import PhoneInput from "react-native-phone-number-input";
 
+import PhoneInput from "react-native-phone-number-input";
 import * as ROUTES from "../../constants/routes";
 import Screen from "../atoms/screendimensions/Screen";
 import Text from "../atoms/fontsText/Text";
@@ -45,14 +45,6 @@ const SignIn = () => {
   const [showMessage, setShowMessage] = useState(false);
   const phoneInput = useRef(null);
   const navigation = useNavigation();
-
-  // const userLogIn = async () => {
-  //   const res = await login();
-  //   if (res) {
-  //     userupdate(res);
-  //     alert("WARN")
-  //   }
-  // };
 
   const onhandlePressValue = async () => {
     const res = await login();
@@ -111,21 +103,6 @@ const SignIn = () => {
         <MandatoryField
           onPress={
             () => setValid(true)
-            // () => onhandlePressValue()
-            // console.log(
-            //   ">>>>>>>>>",
-            //   value,
-            //   ">>>>>>>>>",
-            //   formattedValue,
-            //   ">>>>>>",
-            //   showMessage,
-            //   ">>>>>>>>>>>>>>>>>>>>>>>>",
-            //   valid,
-            //   ">>>>",
-            //   phoneInput,
-            //   ">>>>>>>>>",
-            //   setShowMessage(true),
-            // )
           }
         >
           <PhoneInput
@@ -140,7 +117,6 @@ const SignIn = () => {
             }}
             withDarkTheme
             withShadow
-            // autoFocus
           />
           {valid && (
             <View>

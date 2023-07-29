@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView, Text, View, Image, Pressable } from "react-native";
+
 import * as ROUTES from "../../constants/routes";
 import Screen from "../atoms/screendimensions/Screen";
 import Map from "../atoms/Map";

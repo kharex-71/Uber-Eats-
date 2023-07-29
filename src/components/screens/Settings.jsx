@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import { Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import * as ImagePicker from "expo-image-picker";
 
 import * as ROUTES from "../../constants/routes";
 import Screen from "../atoms/screendimensions/Screen";
@@ -12,7 +11,6 @@ import {
   removeItemValue,
 } from "../../helpers/SaveInformationProvided";
 
-// onPress={() => navigation.navigate(ROUTES.SETTINGS_DETAILS)}
 let userImgUrl = require("../../../assets/userAcccount.png");
 let homeIcon = require("../../../assets/account/icons/Home.png");
 let workIcon = require("../../../assets/account/icons/Work.png");

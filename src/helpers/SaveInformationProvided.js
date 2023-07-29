@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 export const storeData = async (key,value) => {
     try {
       const jsonValue = JSON.stringify(value)
@@ -9,8 +8,6 @@ export const storeData = async (key,value) => {
       alert("Error!! No data saved")
     }
   }
-
-
 export const getData = async (key) => {
     try {
       const jsonValue = await AsyncStorage.getItem(key)
@@ -19,8 +16,6 @@ export const getData = async (key) => {
       alert("Error!! No data found")
     }
   }
-  
-
 export const  removeItemValue = async (key) => {
     try {
         await AsyncStorage.removeItem(key);

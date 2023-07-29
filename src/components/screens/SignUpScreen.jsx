@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import React, { useState } from "react";
+import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import * as ROUTES from "../../constants/routes";
@@ -14,36 +14,7 @@ let appleIcon = require("../../../assets/icon/apple.png");
 let user = require("../../../assets/icon/user1.png");
 let email = require("../../../assets/icon/email1.png");
 let pass = require("../../../assets/icon/paswword1.png");
-// const input = [
-//   {
-//     id: 0,
-//     value: 1,
-//     placeholder: "username",
-//     value: "",
-//     iconUrl: require("../../../assets/icon/user1.png"),
-//   },
-//   {
-//     id: 1,
-//     value: 2,
-//     placeholder: "Email address",
-//     value: "",
-//     iconUrl: require("../../../assets/icon/email1.png"),
-//   },
-//   {
-//     id: 2,
-//     value: 3,
-//     placeholder: "Password",
-//     value: "",
-//     iconUrl: require("../../../assets/icon/paswword1.png"),
-//   },
-//   {
-//     id: 3,
-//     value: 4,
-//     placeholder: "Confirm password",
-//     value: "",
-//     iconUrl: require("../../../assets/icon/paswword1.png"),
-//   },
-// ];
+
 
 const SignUpScreen = () => {
   const [form, setForm] = useState({

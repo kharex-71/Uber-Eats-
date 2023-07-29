@@ -1,9 +1,9 @@
-import { View, Image, Pressable } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
+import { View } from "react-native";
 import { Portal } from "react-native-portalize";
 import { useNavigation } from "@react-navigation/native";
-import styled from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
+import styled from "styled-components/native";
 
 import * as ROUTES from "../../constants/routes";
 import Bottom from "../atoms/BottomSheet/Bottom";
@@ -16,8 +16,6 @@ import LargBtn from "../atoms/custombutton/LargBtn";
 import LargBtnLight from "../atoms/custombutton/LargBtnLight";
 import RecommendationsCard from "../molecules/RecommendationsCard";
 import CardOfPurchasedProducts from "../molecules/CardOfPurchasedProducts";
-import OrderDeliveryCard from "../molecules/OrderDeliveryCard";
-import OrderDetailsCard from "../molecules/OrderDetailsCard";
 
 const Contaienr = styled(Screen)``;
 const Price = styled(Text)`

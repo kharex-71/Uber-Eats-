@@ -1,17 +1,15 @@
-import { View, Image, Pressable, ScrollView, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
+import { View, Image, FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
 import styled from "styled-components/native";
+
 import Screen from "../atoms/screendimensions/Screen";
 import Text from "../atoms/fontsText/Text";
-import CustumInput from "../atoms/TextInput/CustumInput";
 import HeaderBtn from "../atoms/custombutton/HeaderBtn";
 import ProductFramework from "../molecules/ProductFramework";
 import CtgrFrame from "../molecules/CtgrFrame";
 import { category } from "../../data/appData";
 
-let searchIcon = require("../../../assets/icon/Vector.png");
 let timeIcon = require("../../../assets/grocery/iconclock.png");
 let dollarIcon = require("../../../assets/grocery/dollarcoin.png");
 let rightArrowIcon = require("../../../assets/icon/back.png");
@@ -48,11 +46,8 @@ const BtnContainer = styled.View`
 `;
 
 const PromotionBox = styled.View``;
-// const PromoText = styled(Text)`
-//   /* position: absolute; */
-// `;
+
 const ProductionBox = styled.View`
-  /* background-color: aqua; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -87,7 +82,6 @@ const StoreScreen = ({ route }) => {
   const [fetture, setFeature] = useState(true);
   const [ctgr, setCtgr] = useState(false);
   const [order, setOrder] = useState(false);
-
   const [storeCtgr, setStoreCtgr] = useState(category);
 
   const navigation = useNavigation();
@@ -112,7 +106,6 @@ const StoreScreen = ({ route }) => {
     { value: 1, title: "Categories" },
     { value: 2, title: "Orders" },
   ];
-  //   console.log(prod);
   const handlePress = (title) => {
     if (title === "Featured") {
       setFeature(true);
@@ -158,9 +151,6 @@ const StoreScreen = ({ route }) => {
             </BtnContainer>
           </StoresInfoBox>
         </Header>
-        {/* <Text type="light" color="black-400" size={24}>
-          StoreScreen
-        </Text> */}
         <ContentBox>
           <View>
             {fetture && (

@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useNavigation } from "@react-navigation/native";
-import { Image, Pressable, View } from "react-native";
+import { Image, Pressable} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import * as ROUTES from "../constants/routes";
@@ -16,7 +15,7 @@ const backIcon = require("../../assets/icon/backArrow.png")
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
-  const navigation = useNavigation()
+
   return (
     <Tab.Navigator 
       screenOptions={({ route }) => ({
@@ -44,22 +43,16 @@ const BottomTabNavigation = () => {
         component={Home}
         options={{ title: "Home", headerShown: false }}
       />
-
-
       <Tab.Screen
         name={ROUTES.BROWSE_STACK}
         component={StackBowse}
         options={{headerShown: false,title: "Browse"}}
-        
       />
       <Tab.Screen
         name={ROUTES.STACK_GROCERY}
         component={StackGrocery}
         options={{headerShown: false, title: "Grocery"}}
-        
       />
-      
-
       <Tab.Screen
         name={ROUTES.BASKETS_SCREEN}
         component={Baskets}
@@ -69,7 +62,6 @@ const BottomTabNavigation = () => {
           </Pressable>
         ) }}
       />
-
       <Tab.Screen
         name={ROUTES.ACCOUNT_NAVIGATOR_SCREEN}
         component={AccountNavigation}
