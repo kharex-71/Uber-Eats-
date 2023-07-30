@@ -15,7 +15,7 @@ const RegistrationPage = () => {
       headerShown: true,
       title: "",
       headerStyle: {
-        backgroundColor: "#416F71",
+        backgroundColor: "#142328",
       },
     });
   }, [navigation]);
@@ -62,7 +62,7 @@ export default RegistrationPage;
 
 const styles = StyleSheet.create({
   logoBox: {
-    backgroundColor: "#416F71",
+    backgroundColor: "#142328",
   },
   myLogo: {
     fontSize: 28,
@@ -81,12 +81,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "space-evenly",
-    backgroundColor: "#416F71",
+    backgroundColor: "#142328",
     paddingBottom: 20,
   },
   imageBox: {},
   textBox: {
-    // alignItems: "stretch",
   },
   txt: {
     fontSize: 46,
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     color: "#fff",
-    fontWeight: 400,
+    fontWeight: 700,
     textAlign: "left",
   },
   btnBox: {
