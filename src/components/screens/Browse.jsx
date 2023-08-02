@@ -31,6 +31,9 @@ const AllCtgr = styled.View`
   justify-content: space-evenly;
   padding-bottom: 100px;
 `;
+const InputBox = styled.View`
+align-items: center;
+`;
 
 const Browse = () => {
   const [ctgr, setCtgr] = useState(categories);
@@ -40,7 +43,7 @@ const Browse = () => {
 
   // useEffect(() => {
   //   navigation.setOptions({
-  //     headerShown: false,
+  //     headerShown: true,
   //     title: "",
   //     headerSearchBarOptions: {
   //       placeHolder: "Search",
@@ -50,14 +53,16 @@ const Browse = () => {
 
   return (
     <Container>
-      <SearchInput
+      <InputBox >
+       <SearchInput
         placeholder="Food, shopping, drinks, etc"
         value={input}
         onChangeText={(text) => setInput(text)}
         icon={search ? false : true}
         onFocus={() => setSearch(true)}
         onPress={() => setSearch(false)}
-      />
+       />
+      </InputBox>
       {search ? (
         <View>
           <Text
